@@ -18,15 +18,15 @@ inputs:
     default: pr-preview
   source-dir:
     description: Directory containing files to deploy.
-    required: false
-    default: ./dist/gh-pages
+    required: true
+    default: .
   custom-url:
     description: Custom pages URL
     required: false
     default: ""
   repo-name:
     description: Name of the git repository.
-    required: false
+    required: true
     default: ""
   action:
     description: >
