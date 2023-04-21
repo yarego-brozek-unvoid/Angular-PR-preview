@@ -19,7 +19,7 @@ inputs:
   source-dir:
     description: Directory containing files to deploy.
     required: false
-    default: ./dist/gh-pages
+    default: .././dist/gh-pages
   custom-url:
     description: Custom pages URL
     required: false
@@ -90,7 +90,7 @@ runs:
     - name: Build Angular App
       run: |
         npm ci
-        npx ng build --output-path docs --base-href /${{ env.targetdir }}/
+        npx ng build --output-path docs --base-href /Calendar_ci/
       shell: bash
 
     - name: Deploy preview directory
