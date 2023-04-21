@@ -90,7 +90,7 @@ runs:
     - name: Build Angular App
       run: |
         npm ci
-        ng build --deploy-url /${{ env.targetdir }}/
+        npx ng build --deploy-url /${{ env.targetdir }}/
       shell: bash
 
     - name: Build Angular App and Deploy preview directory
