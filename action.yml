@@ -19,7 +19,7 @@ inputs:
   source-dir:
     description: Directory containing files to deploy.
     required: false
-    default: .
+    default: ./dist/gh-pages
   custom-url:
     description: Custom pages URL
     required: false
@@ -87,9 +87,11 @@ runs:
       run: ${{ github.action_path }}/lib/determine-auto-action.sh
       shell: bash
 
-    - name: Deploy preview directory
+    - name: Build Angular App and Deploy preview directory
       if: env.action == 'deploy'
-      uses: JamesIves/github-pages-deploy-action@v4
+      run: |
+        npm ci
+        ng ng build --deploy-url /${{ env.targetdir }}/
       with:
         branch: ${{ inputs.preview-branch }}
         folder: ${{ inputs.source-dir }}
