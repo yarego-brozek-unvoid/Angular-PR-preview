@@ -24,6 +24,10 @@ inputs:
     description: Custom pages URL
     required: false
     default: ""
+  repo-name:
+    description: Name of the git repository.
+    required: false
+    default: ""
   action:
     description: >
       Determines what this action will do when it is executed. Supported
@@ -90,7 +94,7 @@ runs:
     - name: Build Angular App
       run: |
         npm ci
-        npx ng build --base-href /${{ env.targetdir }}/
+        npx ng build --base-href /${ inputs.repo-name }/${{ env.targetdir }}/
       shell: bash
 
     - name: Deploy preview directory
