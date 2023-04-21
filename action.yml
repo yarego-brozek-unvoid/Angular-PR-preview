@@ -90,10 +90,10 @@ runs:
     - name: Build Angular App
       run: |
         npm ci
-        npx ng build --output-path docs --base-href /${{ env.targetdir }}/
+        npx ng build --output-path docs --base-href /${{ inputs.preview-branch }}/pr-preview/pr-${{ env.pr }}/
       shell: bash
 
-    - name: Build Angular App and Deploy preview directory
+    - name: Deploy preview directory
       if: env.action == 'deploy'
       uses: JamesIves/github-pages-deploy-action@v4
       with:
