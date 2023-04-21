@@ -87,11 +87,14 @@ runs:
       run: ${{ github.action_path }}/lib/determine-auto-action.sh
       shell: bash
 
-    - name: Build Angular App and Deploy preview directory
-      if: env.action == 'deploy'
+    - name: Build Angular App
       run: |
         npm ci
         ng ng build --deploy-url /${{ env.targetdir }}/
+
+    - name: Build Angular App and Deploy preview directory
+      if: env.action == 'deploy'
+      uses: JamesIves/github-pages-deploy-action@v4
       with:
         branch: ${{ inputs.preview-branch }}
         folder: ${{ inputs.source-dir }}
