@@ -90,7 +90,7 @@ runs:
     - name: Build Angular App
       run: |
         npm ci
-        npx ng build --output-path docs --base-href /${{ inputs.preview-branch }}/pr-preview/pr-${{ env.pr }}/
+        npx ng build docs --base-href /${{ inputs.source-dir }}/
       shell: bash
 
     - name: Deploy preview directory
